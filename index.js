@@ -4,8 +4,6 @@ var fs = require('fs')
 
 var spawn = require('child_process').spawn
 
-var mount = require('src-mount');
-
 var utils = require('nodeos-mount-utils');
 
 
@@ -28,18 +26,7 @@ utils.mountfs(envDev, path, type, extras, function(error)
 {
   if(!error)
   {
-    // Running on Docker?
-    try
-    {
-      fs.statSync('/.dockerinit')
-      var cmd = '/home/nodeos/bin/nsh'
-    }
-    catch(err)
-    {
-      var cmd = 'forever-starter'
-    }
-
-    spawn(cmd, [],
+    spawn('forever-starter', [],
     {
       stdio: 'inherit',
       detached: true
