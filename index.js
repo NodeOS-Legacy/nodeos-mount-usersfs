@@ -5,6 +5,7 @@ var fs = require('fs')
 var spawn = require('child_process').spawn
 
 var utils = require('nodeos-mount-utils');
+var mount = require('src-mount');
 
 
 function startRepl(error)
@@ -27,6 +28,12 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
 {
   if(!error)
   {
+    var path   = '/root';
+    var flags  = mount.flags.MS_REMOUNT | mount.flags.MS_RDONLY;
+
+    var res = mount.mount('', path, '', flags);
+    if(res == -1) console.error('Error while re-mounting '+path+' as read-only')
+
     spawn('forever-starter', [],
     {
       stdio: 'inherit',
