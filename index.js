@@ -28,11 +28,11 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
 {
   if(!error)
   {
-    var path   = '/root';
-    var flags  = mount.flags.MS_REMOUNT | mount.flags.MS_RDONLY;
+    var rootfspath = '/root';
+    var flags      = mount.flags.MS_REMOUNT | mount.flags.MS_RDONLY;
 
-    var res = mount.mount('', path, '', flags);
-    if(res == -1) console.error('Error while re-mounting '+path+' as read-only')
+    var res = mount.mount('', rootfspath, '', flags);
+    if(res == -1) console.error('Error re-mounting '+rootfspath+' as read-only')
 
     spawn('forever-starter', [],
     {
