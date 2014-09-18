@@ -20,9 +20,10 @@ function startRepl(error)
 var envDev = 'USERS'
 var path   = '/home';
 var type   = 'ext4' //process.env.ROOTFSTYPE || 'auto';
+var flags  = utils.flags.MS_NODEV | utils.flags.MS_NOSUID;
 var extras = '';
 
-utils.mountfs(envDev, path, type, extras, function(error)
+utils.mountfs(envDev, path, type, flags, extras, function(error)
 {
   if(!error)
   {
