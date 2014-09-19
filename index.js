@@ -72,10 +72,21 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
       {
         fs.statSync('/.dockerinit')
 
+        var HOME = '/home/nodeos'
+        var env =
+        {
+          HOME: HOME,
+          PATH: HOME+'/bin:/usr/bin',
+          __proto__: process.env
+        }
+
         spawn(process.argv[2], [],
         {
           stdio: 'inherit',
-          detached: true
+          detached: true,
+
+          cwd: HOME,
+          env: env
         })
         .on('error', startRepl)
       }
