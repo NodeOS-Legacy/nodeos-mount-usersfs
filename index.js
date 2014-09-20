@@ -42,6 +42,7 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
       detached: true
     })
     .on('error', startRepl)
+    .unref();
 
     // Start users services
     fs.readdir(path, function(error, files)
@@ -72,23 +73,13 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
       {
         fs.statSync('/.dockerinit')
 
-        var HOME = '/home/nodeos'
-        var env =
-        {
-          HOME: HOME,
-          PATH: HOME+'/bin:/usr/bin',
-          __proto__: process.env
-        }
-
         spawn(process.argv[2], [],
         {
           stdio: 'inherit',
-          detached: true,
-
-          cwd: HOME,
-          env: env
+          detached: true
         })
         .on('error', startRepl)
+        .unref();
       }
       catch(error)
       {
