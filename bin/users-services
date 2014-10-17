@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+
+var execInit = require('nodeos-mount-utils').execInit;
+
+var startRepl = require('..').startRepl;
+
+
+if(process.argv.length < 2)
+  return console.warn('Users filesystem path is not defined');
+
+var path = process.argv[2];
+
+fs.readdir(path, function(error, files)
+{
+  if(error) return startRepl(error)
+
+  files.forEach(function(file)
+  {
+    const HOME = path+'/'+file
+
+    fs.stat(HOME, function(err, stats)
+    {
+      if(err) return console.warn(err)
+
+      if(!stats.isDirectory())
+        return console.warn(HOME+' is not a directory');
+
+      var error = execInit(HOME)
+      if(error)
+        console.warn(error)
+    })
+  })
+})
