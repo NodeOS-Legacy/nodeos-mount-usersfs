@@ -8,12 +8,15 @@ var utils = require('nodeos-mount-utils');
 var mount = require('src-mount');
 
 
-exports.startRepl = function startRepl(error)
+function startRepl(error)
 {
   console.warn(error)
 
   utils.startRepl('NodeOS-usersfs')
 }
+
+exports.startRepl = startRepl;
+
 
 function exec(command, args)
 {
@@ -51,7 +54,7 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
   exec('forever-starter');
 
   // Start users services
-  exec('forever', ['start', '-m', '1', 'users-services', path]);
+  exec('forever', ['start', '-m', '1', 'bin/users-services', path]);
 
   // Start command given as parameter
   if(process.argv.length > 2)
