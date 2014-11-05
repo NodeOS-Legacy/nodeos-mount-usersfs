@@ -47,8 +47,8 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
   var rootfspath = '/root';
   var flags      = mount.flags.MS_REMOUNT | mount.flags.MS_RDONLY;
 
-  var res = mount.mount('', rootfspath, '', flags);
-  if(res == -1) console.error('Error re-mounting '+rootfspath+' as read-only')
+//  var res = mount.mount('', rootfspath, '', flags, '');
+//  if(res == -1) console.error('Error re-mounting '+rootfspath+' as read-only')
 
   // Start global system services
   exec('forever-starter');

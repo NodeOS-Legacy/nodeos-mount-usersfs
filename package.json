@@ -1,6 +1,6 @@
 {
   "name": "nodeos-usersfs",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Prepare and mount the NodeOS users filesystem",
   "main": "index.js",
   "bin": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/piranna/NodeOS-usersfs",
   "dependencies": {
-    "nodeos-mount-utils": "^0.0.7",
+    "nodeos-mount-utils": "^0.0.8",
     "src-mount": "^0.1.0"
   },
   "devDependencies": {},
