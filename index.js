@@ -43,10 +43,10 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
   // Error mounting the users filesystem, enable REPL
   if(error) return startRepl(error)
 
-  // Re-mount /root as read-only
-  var rootfspath = '/root';
-  var flags      = mount.flags.MS_REMOUNT | mount.flags.MS_RDONLY;
-
+//  // Re-mount / as read-only
+//  var rootfspath = '/';
+//  var flags      = mount.flags.MS_REMOUNT | mount.flags.MS_RDONLY;
+//
 //  var res = mount.mount('', rootfspath, '', flags, '');
 //  if(res == -1) console.error('Error re-mounting '+rootfspath+' as read-only')
 

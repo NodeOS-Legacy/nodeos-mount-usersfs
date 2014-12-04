@@ -1,5 +1,5 @@
 {
-  "name": "nodeos-usersfs",
+  "name": "nodeos-mount-usersfs",
   "version": "0.0.14",
   "description": "Prepare and mount the NodeOS users filesystem",
   "main": "index.js",
