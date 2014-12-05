@@ -1,10 +1,10 @@
 {
   "name": "nodeos-mount-usersfs",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Prepare and mount the NodeOS users filesystem",
   "main": "index.js",
   "bin": {
-    "nodeos-usersfs": "index.js",
+    "nodeos-mount-usersfs": "index.js",
     "users-services": "bin/users-services"
   },
   "scripts": {
