@@ -5,7 +5,7 @@ var fs = require('fs')
 var spawn = require('child_process').spawn
 
 var utils = require('nodeos-mount-utils');
-var mount = require('src-mount');
+var mount = require('nodeos-mount');
 
 
 function startRepl(error)
@@ -34,11 +34,10 @@ function exec(command, args)
 
 var envDev = 'USERS'
 var path   = '/home';
-var type   = 'ext4' //process.env.ROOTFSTYPE || 'auto';
+var type   = process.env.ROOTFSTYPE || 'auto';
 var flags  = utils.flags.MS_NODEV | utils.flags.MS_NOSUID;
-var extras = '';
 
-utils.mountfs(envDev, path, type, flags, extras, function(error)
+utils.mountfs(envDev, path, type, flags, function(error)
 {
   // Error mounting the users filesystem, enable REPL
   if(error) return startRepl(error)
@@ -47,7 +46,7 @@ utils.mountfs(envDev, path, type, flags, extras, function(error)
 //  var rootfspath = '/';
 //  var flags      = mount.flags.MS_REMOUNT | mount.flags.MS_RDONLY;
 //
-//  var res = mount.mount('', rootfspath, '', flags, '');
+//  var res = mount.mount('', rootfspath, flags);
 //  if(res == -1) console.error('Error re-mounting '+rootfspath+' as read-only')
 
   // Start global system services

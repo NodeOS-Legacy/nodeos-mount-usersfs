@@ -12,17 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/piranna/NodeOS-usersfs.git"
+    "url": "https://github.com/NodeOS/nodeos-usersfs.git"
   },
   "author": "Jesús Leganés Combarro 'piranna' <piranna@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/piranna/NodeOS-usersfs/issues"
+    "url": "https://github.com/NodeOS/nodeos-usersfs/issues"
   },
-  "homepage": "https://github.com/piranna/NodeOS-usersfs",
+  "homepage": "https://github.com/NodeOS/nodeos-usersfs",
   "dependencies": {
     "nodeos-mount-utils": "^0.0.8",
-    "src-mount": "^0.1.0"
+    "nodeos-mount": "netlovers/nodeos-mount"
   },
   "devDependencies": {},
   "keywords": [
